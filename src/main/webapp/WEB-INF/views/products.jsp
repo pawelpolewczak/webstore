@@ -1,11 +1,14 @@
 <%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <html>
+
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
     <title>Produkty</title>
 </head>
+
 <body>
     <section>
         <div class="jumbotron">
@@ -25,6 +28,11 @@
                             <p>${product.description}</p>
                             <p>${product.unitPrice} PLN</p>
                             <p>Liczba sztuk w magazynie: ${product.unitsInStock}</p>
+                            <p>
+                                <a href=" <spring:url value=" /webstore/products/product?id=${product.productID} " /> " class="btn btn-primary">
+                                    <span class="glyphicon-info-sign glyphicon" /></span> Szczegóły
+                                </a>
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -32,4 +40,5 @@
         </div>
     </section>
 </body>
+
 </html>
