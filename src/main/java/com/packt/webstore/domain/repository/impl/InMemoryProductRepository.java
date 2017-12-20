@@ -89,4 +89,64 @@ public class InMemoryProductRepository implements ProductRepository {
         productsByCategory.retainAll(productsByBrand);
         return productsByCategory;
     }
+
+    @Override
+    public List<Product> getProductsByManufacturer(String manufacturer) {
+        List<Product> productsByManufacturer = new ArrayList<>();
+        for(Product product: listOfProducts) {
+            if(manufacturer.equalsIgnoreCase(product.getManufacturer())){
+                productsByManufacturer.add(product);
+            }
+        }
+        return productsByManufacturer;
+    }
+
+    @Override
+    public List<Product> getProductsByPriceRange(Map<String, List<String>> priceFilterParams) {
+        List<Product> correctProducts = new ArrayList<>();
+        Set<Product> productsByLowPrice = new HashSet<>();
+        Set<Product> productsByHighPrice = new HashSet<>();
+        Set<String> criterias = priceFilterParams.keySet();
+        if(criterias.contains("low")){
+            int lowRange = Integer.valueOf(priceFilterParams.get("low").get(0));
+            for (Product product : listOfProducts) {
+                if(product.getUnitPrice().intValue() > lowRange)
+                    productsByLowPrice.add(product);
+            }
+        }
+        if(criterias.contains("high")){
+            int highRange = Integer.valueOf(priceFilterParams.get("high").get(0));
+            for (Product product : listOfProducts){
+                if(product.getUnitPrice().intValue() < highRange)
+                    productsByHighPrice.add(product);
+            }
+        }
+        productsByHighPrice.retainAll(productsByLowPrice);
+        correctProducts.addAll(productsByHighPrice);
+        return correctProducts;
+    }
+
+    @Override
+    public List<Product> getProductsByMultipleFilters(String category, String manufacturer, Map<String, List<String>> priceFilterParams) {
+        List<Product> listOfCompatybileProducts = new ArrayList<>();
+        Set<Product> productsByCategory = new HashSet<>();
+        Set<Product> productsByManufacturer = new HashSet<>();
+        Set<Product> productsByPriceRange = new HashSet<>();
+
+        productsByCategory.addAll(this.getProductsByCategory(category));
+        productsByManufacturer.addAll(this.getProductsByManufacturer(manufacturer));
+        productsByPriceRange.addAll(this.getProductsByPriceRange(priceFilterParams));
+
+        productsByCategory.retainAll(productsByManufacturer);
+        productsByCategory.retainAll(productsByPriceRange);
+        listOfCompatybileProducts.addAll(productsByCategory);
+        return listOfCompatybileProducts;
+    }
+
+    @Override
+    public void addProduct(Product product) {
+        listOfProducts.add(product);
+    }
+
+
 }
