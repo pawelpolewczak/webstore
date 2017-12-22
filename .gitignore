@@ -31,3 +31,4 @@ target/classes/com/packt/webstore/controller/HomeController.class
 target/tomcat/work/Tomcat/localhost/webstore/org/apache/jsp/WEB_002dINF/views/welcome_jsp.java
 target/tomcat/work/Tomcat/localhost/webstore/org/apache/jsp/WEB_002dINF/views/welcome_jsp.class
 target/
+.idea/libraries/
