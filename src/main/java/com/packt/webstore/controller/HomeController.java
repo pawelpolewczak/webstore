@@ -12,7 +12,7 @@ public class HomeController {
         model.addAttribute("greeting", "Witaj w sklepie internetowym!");
         model.addAttribute("tagline", "Wyjatkowym i jedynym sklepie internetowym");
 
-        return "redirect:/welcome/greeting";
+        return "forward:/welcome/greeting";
     }
 
     @RequestMapping("/welcome/greeting")
