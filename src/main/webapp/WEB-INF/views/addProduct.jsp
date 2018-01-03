@@ -17,17 +17,22 @@
 				<p>Dodaj produkty</p>
 			</div>
 			<a href="<c:url value="/j_spring_security_logout" />" class="btn btn-danger btn-mini pull-right">wyloguj</a>
+			<div class="pull-right" style="padding-right:50px">
+				<a href="?language=pl" >Polski </a>|<a href="?language=nl">Holenderski</a>
+			</div>
 		</div>
 	</section>
 	<section class="container">
 		<form:form  modelAttribute="newProduct" class="form-horizontal" enctype="multipart/form-data">
+			<form:errors path="*" cssClass="alert alert-danger" element="div"/>
 			<fieldset>
 				<legend>Dodaj nowy produkt</legend>
 
 				<div class="form-group">
-					<label class="control-label col-lg-2 col-lg-2" for="productID"><spring:message code="addProduct.form.productID.label"/></label>
+					<label class="control-label col-lg-2 col-lg-2" for="productID"><spring:message code="addProduct.Form.productID.label"/></label>
 					<div class="col-lg-10">
 						<form:input id="productID" path="productID" type="text" class="form:input-large"/>
+						<form:errors path="productID" cssClass="text-danger"/>
 					</div>
 				</div>
 
@@ -35,6 +40,7 @@
 					<label class="control-label col-lg-2" for="name">Nazwa</label>
 					<div class="col-lg-10">
 						<form:input id="name" path="name" type="text" class="form:input-large"/>
+						<form:errors path="name" cssClass="text-danger"/>
 					</div>
 				</div>
 
@@ -43,6 +49,7 @@
 					<div class="col-lg-10">
 						<div class="form:input-prepend">
 							<form:input id="unitPrice" path="unitPrice" type="text" class="form:input-large"/>
+							<form:errors path="unitPrice" cssClass="text-danger"/>
 						</div>
 					</div>
 				</div>
@@ -86,7 +93,7 @@
 
 				<div class="form-group">
 				    <label class="control-label col-lg-2" for="productImage">
-				        <spring:message code="addProduct.form.productImage.label"/>
+				        <spring:message code="addProduct.Form.productImage.label"/>
 				    </label>
 				    <div class="col-lg-10">
 				        <form:input id="productImage" path="productImage" type="file" class="form:input-large"/>
@@ -95,7 +102,7 @@
 
 				<div class="form-group">
 					<label class="control-label col-lg-2" for="userInstruction">
-						<spring:message code="addProduct.form.userInstruction.label"/>
+						<spring:message code="addProduct.Form.userInstruction.label"/>
 					</label>
 					<div class="col-lg-10">
 						<form:input id="userInstruction" path="userInstruction" type="file" class="form:input-large"/>

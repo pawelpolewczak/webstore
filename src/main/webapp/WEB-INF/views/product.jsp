@@ -7,6 +7,9 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
     <title>Produkt</title>
+    <div class="pull-right" style="padding-right:50px">
+		<a href="?id=${product.productID}&language=pl" >Polski </a>|<a href="?id=${product.productID}&language=nl">Holenderski</a>
+	</div>
 </head>
 
 <body>
@@ -24,26 +27,26 @@
                 <h3>${product.name}</h3>
                 <p>${product.description}</p>
                 <p>
-                    <strong>Kod produktu: </strong>
+                    <strong><spring:message code="product.productID.label"/></strong>
                     <span class="label label-warning">${product.productID}</span>
                 </p>
                 <p>
-                    <strong>Producent</strong>: ${product.manufacturer}
+                    <strong><spring:message code="product.Manufacturer.label"/></strong>: ${product.manufacturer}
                 </p>
                 <p>
-                    <strong>Kategoria</strong>: ${product.category}
+                    <strong><spring:message code="product.Category.label"/></strong>: ${product.category}
                 </p>
                 <p>
-                    <strong>Dostepna ilosc sztuk</strong>:${product.unitsInStock}
+                    <strong><spring:message code="product.UnitsInStock.label"/></strong>:${product.unitsInStock}
                 </p>
-                <h4>${product.unitPrice} PLN</h4>
+                <h4>${product.unitPrice} <spring:message code="product.Currency.label"/></h4>
                 <p>
                     <a href="<spring:url value="/products" />" class="btn btndefault">
-                        <span class="glyphicon-hand-left glyphicon"></span> Wstecz
+                        <span class="glyphicon-hand-left glyphicon"></span> <spring:message code="product.Back.label"/>
                     </a>
                     <a href="#" class="btn btn-warning btn-large">
                         <span class="glyphicon-shopping-cart glyphicon"></span>
-                        Zamow teraz
+                        <spring:message code="product.OrderNow.label"/>
                     </a>
                 </p>
             </div>
