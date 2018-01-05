@@ -1,5 +1,6 @@
 package com.packt.webstore.domain;
 
+import com.packt.webstore.validator.ProductID;
 import org.codehaus.jackson.annotate.JsonIgnore;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -12,6 +13,7 @@ import java.util.Objects;
 @XmlRootElement
 public class Product {
     @Pattern(regexp = "P[0-9]+", message = "{Pattern.Product.productID.validation}")
+    @ProductID
     private String productID;
     @Size(min = 4, max = 50, message = "{Size.Product.name.validation}")
     private String name;
@@ -21,7 +23,10 @@ public class Product {
     private BigDecimal unitPrice;
     private String description;
     private String manufacturer;
+    @Size(min = 1, max = 50, message = "{Size.Product.category.validation}")
+    @NotNull(message = "{NotNull.Product.category.validation}")
     private String category;
+    @Min(value = 1, message = "{Min.Product.unitsInStock.validation}")
     private long unitsInStock;
     private long unitsInOrder;
     private boolean discontinued;
