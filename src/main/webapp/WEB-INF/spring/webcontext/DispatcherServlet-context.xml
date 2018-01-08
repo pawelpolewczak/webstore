@@ -80,5 +80,15 @@
         <property name="validationMessageSource" ref="messageSource" />
     </bean>
 
+    <bean id="productValidator" class="com.packt.webstore.validator.ProductValidator">
+        <property name="springValidators">
+            <set>
+                <ref bean="unitsInStockValidator"/>
+            </set>
+        </property>
+    </bean>
+
+    <bean id="unitsInStockValidator" class="com.packt.webstore.validator.UnitsInStockValidator"/>
+
 
 </beans>
