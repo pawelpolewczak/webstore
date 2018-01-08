@@ -149,5 +149,17 @@ public class InMemoryProductRepository implements ProductRepository {
         listOfProducts.add(product);
     }
 
+    @Override
+    public List<String> getAllowedCategories() {
+        Set<String> allowedCategories = new HashSet<>();
+        List<String> categoriesToReturn = new ArrayList<>();
+        for (Product product :
+                listOfProducts) {
+            allowedCategories.add(product.getCategory());
+        }
+        categoriesToReturn.addAll(allowedCategories);
+        return categoriesToReturn;
+    }
+
 
 }

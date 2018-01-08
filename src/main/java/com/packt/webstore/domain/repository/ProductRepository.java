@@ -16,4 +16,5 @@ public interface ProductRepository {
     List<Product> getProductsByPriceRange(Map<String, List<String>> priceFilterParams);
     List<Product> getProductsByMultipleFilters(String category, String manufacturer, Map<String, List<String>> priceFilterParams);
     void addProduct(Product product);
+    List<String> getAllowedCategories();
 }
